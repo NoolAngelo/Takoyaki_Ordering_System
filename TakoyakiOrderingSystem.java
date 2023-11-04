@@ -154,7 +154,33 @@ public class TakoyakiOrderingSystem {
                     System.out.println("Invalid payment method choice.");
                     break;
             }
+
         }
+    
+        if (addItems.equalsIgnoreCase("N")) {
+            // Payment handling
+            System.out.println("Total cost for your order: Php. " + totalCost);
+            System.out.println("Select Payment method: ");
+            System.out.println("1. Cash");
+            System.out.println("2. Gcash or Maya");
+            Scanner paymentScanner = new Scanner(System.in);
+            int paymentChoice = paymentScanner.nextInt();
+    
+            switch (paymentChoice) {
+                case 1:
+                    System.out.println("You've chosen to pay with Cash.");
+                    handleCashPayment();
+                    break;
+                case 2:
+                    System.out.println("You've chosen to pay with Gcash or Maya.");
+                    handleGcashOrMayaPayment();
+                    break;
+                default:
+                    System.out.println("Invalid payment method choice.");
+                    break;
+            }
+        }
+    
     }
 
     public void handleCashPayment() {
