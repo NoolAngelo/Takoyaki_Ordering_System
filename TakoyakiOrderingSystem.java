@@ -70,7 +70,7 @@ public class TakoyakiOrderingSystem {
                                     "Pepsi 320ml",
                                     "Mountain Dew 320ml"
                             };
-                            double[] drinkPrices = {34.10, 34.50, 34.10, 31.10, 26.95, 26.95};
+                            double[] drinkPrices = { 34.10, 34.50, 34.10, 31.10, 26.95, 26.95 };
                             Scanner drinkQ = new Scanner(System.in);
                             System.out.print("Drink Quantity: ");
                             int drinkQuantity = drinkQ.nextInt();
@@ -137,7 +137,7 @@ public class TakoyakiOrderingSystem {
             System.out.println("Total cost for your order: Php. " + totalCost);
             System.out.println("Select Payment method: ");
             System.out.println("1. Cash");
-            System.out.println("2. GCash or Maya");
+            System.out.println("2. Gcash or Maya");
             Scanner paymentScanner = new Scanner(System.in);
             int paymentChoice = paymentScanner.nextInt();
 
