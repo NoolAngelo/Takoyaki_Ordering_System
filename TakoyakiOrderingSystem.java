@@ -158,12 +158,14 @@ public class TakoyakiOrderingSystem {
     }
 
     public void handleCashPayment() {
+        System.out.println("This is cash payment");
         // Implement the logic for handling cash payment
         // This can include taking the cash, calculating change, etc.
         // You can add this logic here.
     }
 
     public void handleGcashOrMayaPayment() {
+        System.out.println("This is E=Wallet payment");
         // Implement the logic for handling Gcash or Maya payment
         // This can include scanning QR codes, verifying transactions, etc.
         // You can add this logic here.
