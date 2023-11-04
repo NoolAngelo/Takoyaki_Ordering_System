@@ -137,7 +137,7 @@ public class TakoyakiOrderingSystem {
             System.out.println("Total cost for your order: Php. " + totalCost);
             System.out.println("Select Payment method: ");
             System.out.println("1. Cash");
-            System.out.println("2. Gcash or Maya");
+            System.out.println("2. GCash or Maya");
             Scanner paymentScanner = new Scanner(System.in);
             int paymentChoice = paymentScanner.nextInt();
 
