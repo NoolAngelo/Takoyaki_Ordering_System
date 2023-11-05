@@ -22,7 +22,7 @@ public class TakoyakiOrderingSystem {
         System.out.println("\t\t\t\t+=======================================+");
         System.out.println("\t\t\t\t                  Drinks                 ");
         System.out.println("\t\t\t\t Available canned:                       ");
-        System.out.println("\t\t\t\t   1. Coke Original 325ml      Php. 34.10");
+        System.out.println("\t\t\t\t   1. coke Original 325ml      Php. 34.10");
         System.out.println("\t\t\t\t   2. Coke Zero 325ml          Php. 34.50");
         System.out.println("\t\t\t\t   3. Sprite 325ml             Php. 34.10");
         System.out.println("\t\t\t\t   4. Royal 330ml              Php. 31.10");
