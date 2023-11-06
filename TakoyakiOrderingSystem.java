@@ -25,7 +25,7 @@ public class TakoyakiOrderingSystem {
         System.out.println("\t\t\t\t   1. Coke Original 325ml      Php. 34.10");
         System.out.println("\t\t\t\t   2. Coke Zero 325ml          Php. 34.50");
         System.out.println("\t\t\t\t   3. Sprite 325ml             Php. 34.10");
-        System.out.println("\t\t\t\t   4. Royal 330ml              Php. 31.10");
+        System.out.println("\t\t\t\t   4. royal 330ml              Php. 31.10");
         System.out.println("\t\t\t\t   5. Pepsi 320ml              Php. 26.95");
         System.out.println("\t\t\t\t   6. Mountain Dew 320ml       Php. 26.95");
         System.out.println("\t\t\t\t   7. CANCEL                             ");
@@ -156,7 +156,7 @@ public class TakoyakiOrderingSystem {
             }
 
         }
-    
+
         if (addItems.equalsIgnoreCase("N")) {
             // Payment handling
             System.out.println("Total cost for your order: Php. " + totalCost);
@@ -165,7 +165,7 @@ public class TakoyakiOrderingSystem {
             System.out.println("2. Gcash or Maya");
             Scanner paymentScanner = new Scanner(System.in);
             int paymentChoice = paymentScanner.nextInt();
-    
+
             switch (paymentChoice) {
                 case 1:
                     System.out.println("You've chosen to pay with Cash.");
@@ -180,7 +180,7 @@ public class TakoyakiOrderingSystem {
                     break;
             }
         }
-    
+
     }
 
     public void handleCashPayment() {
