@@ -35,6 +35,7 @@ public class TakoyakiOrderingSystem {
     public void orderTakoyaki(String flavor, double price) {
         Scanner scanQuantity = new Scanner(System.in);
         System.out.println("You selected " + flavor + " Takoyaki.");
+        System.out.println(" ");
         System.out.print("Order Quantity: ");
         int orderQuantity = scanQuantity.nextInt();
 
@@ -42,8 +43,9 @@ public class TakoyakiOrderingSystem {
 
         totalCost += orderCost;
 
-        System.out.println("Total cost for " + flavor + " Takoyaki: Php. " + orderCost);
-
+        System.out.println("Total cost for " + flavor + " Takoyaki: Php. " + orderCost + " Added to Order");
+        System.out.println("Overall selected items cost: " +totalCost);
+        System.out.println(" ");
         System.out.print("Would you like to add additional items? (Y/N): ");
         Scanner scanAddItems = new Scanner(System.in);
         String addItems = scanAddItems.nextLine();
@@ -51,10 +53,12 @@ public class TakoyakiOrderingSystem {
         if (addItems.equalsIgnoreCase("Y")) {
             do {
                 Scanner drinkOrAddTakoyaki = new Scanner(System.in);
+                System.out.println(" ");
                 System.out.println("What item would you like to add?");
                 System.out.println("1. Drink");
                 System.out.println("2. Add New Takoyaki Order");
-                int choice1or2 = drinkOrAddTakoyaki.nextInt();
+                System.out.println(" ");
+                System.out.print("Your choice: ");int choice1or2 = drinkOrAddTakoyaki.nextInt();
 
                 switch (choice1or2) {
                     case 1:
@@ -75,9 +79,11 @@ public class TakoyakiOrderingSystem {
                             System.out.print("Drink Quantity: ");
                             int drinkQuantity = drinkQ.nextInt();
                             if (drinkQuantity == 0) {
+                                System.out.println(" ");
                                 System.out.println("You've added a " + drinkMenu[drinkChoice - 1] + " to your order.");
                                 totalCost += drinkPrices[drinkChoice - 1];
                             } else {
+                                System.out.println(" ");
                                 System.out.println("You've added " + drinkQuantity + " " + drinkMenu[drinkChoice - 1]
                                         + " to your order.");
                                 totalCost += drinkPrices[drinkChoice - 1] * drinkQuantity;
@@ -89,6 +95,7 @@ public class TakoyakiOrderingSystem {
                         }
                         break;
                     case 2:
+                        System.out.println(" ");
                         System.out.println("You've chosen to add a new takoyaki order.");
                         displayMenu();
                         Scanner newOrderScanner = new Scanner(System.in);
@@ -128,6 +135,9 @@ public class TakoyakiOrderingSystem {
                 }
 
                 // After adding items, ask if the user wants to add more
+                System.out.println(" ");
+                System.out.println("Overall selected items cost: " + totalCost);
+                System.out.println(" ");
                 System.out.print("Would you like to add more items? (Y/N): ");
                 addItems = drinkOrAddTakoyaki.next();
 
@@ -135,6 +145,7 @@ public class TakoyakiOrderingSystem {
 
             // Payment handling
             System.out.println("Total cost for your order: Php. " + totalCost);
+            System.out.println(" ");
             System.out.println("Select Payment method: ");
             System.out.println("1. Cash");
             System.out.println("2. Gcash or Maya");
@@ -143,6 +154,7 @@ public class TakoyakiOrderingSystem {
 
             switch (paymentChoice) {
                 case 1:
+                    System.out.println(" ");
                     System.out.println("You've chosen to pay with Cash.");
                     handleCashPayment();
                     break;
@@ -160,6 +172,7 @@ public class TakoyakiOrderingSystem {
         if (addItems.equalsIgnoreCase("N")) {
             // Payment handling
             System.out.println("Total cost for your order: Php. " + totalCost);
+            System.out.println(" ");
             System.out.println("Select Payment method: ");
             System.out.println("1. Cash");
             System.out.println("2. Gcash or Maya");
@@ -168,10 +181,12 @@ public class TakoyakiOrderingSystem {
 
             switch (paymentChoice) {
                 case 1:
+                    System.out.println(" ");
                     System.out.println("You've chosen to pay with Cash.");
                     handleCashPayment();
                     break;
                 case 2:
+                    System.out.println(" ");
                     System.out.println("You've chosen to pay with Gcash or Maya.");
                     handleGcashOrMayaPayment();
                     break;
