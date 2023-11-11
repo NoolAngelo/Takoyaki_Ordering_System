@@ -44,13 +44,25 @@ public class TakoyakiOrderingSystem {
         totalCost += orderCost;
 
         System.out.println("Total cost for " + flavor + " Takoyaki: Php. " + orderCost + " Added to Order");
-        System.out.println("Overall selected items cost: " +totalCost);
+        System.out.println("Overall selected items cost: " + totalCost);
         System.out.println(" ");
-        System.out.print("Would you like to add additional items? (Y/N): ");
-        Scanner scanAddItems = new Scanner(System.in);
-        String addItems = scanAddItems.nextLine();
+        String addItems;
 
-        if (addItems.equalsIgnoreCase("Y")) {
+        // Input validation for "Yes" or "No" choices
+        boolean validInput;
+        Scanner scanAddItems = new Scanner(System.in);
+
+        do {
+            System.out.print("Would you like to add additional items? (Y/N): ");
+            addItems = scanAddItems.nextLine().toUpperCase();
+            validInput = addItems.equals("Y") || addItems.equals("N");
+
+            if (!validInput) {
+                System.out.println("Invalid choice. Please enter 'Y' for Yes or 'N' for No.");
+            }
+        } while (!validInput);
+
+        if (addItems.equals("Y")) {
             do {
                 Scanner drinkOrAddTakoyaki = new Scanner(System.in);
                 System.out.println(" ");
@@ -58,13 +70,15 @@ public class TakoyakiOrderingSystem {
                 System.out.println("1. Drink");
                 System.out.println("2. Add New Takoyaki Order");
                 System.out.println(" ");
-                System.out.print("Your choice: ");int choice1or2 = drinkOrAddTakoyaki.nextInt();
+                System.out.print("Your choice: ");
+                int choice1or2 = drinkOrAddTakoyaki.nextInt();
 
                 switch (choice1or2) {
                     case 1:
                         displayDrinks();
                         System.out.print("Select a drink (1-6) or 7 to cancel: ");
                         int drinkChoice = drinkOrAddTakoyaki.nextInt();
+
                         if (drinkChoice >= 1 && drinkChoice <= 6) {
                             String[] drinkMenu = {
                                     "Coke Original 325ml",
@@ -78,6 +92,7 @@ public class TakoyakiOrderingSystem {
                             Scanner drinkQ = new Scanner(System.in);
                             System.out.print("Drink Quantity: ");
                             int drinkQuantity = drinkQ.nextInt();
+
                             if (drinkQuantity == 0) {
                                 System.out.println(" ");
                                 System.out.println("You've added a " + drinkMenu[drinkChoice - 1] + " to your order.");
@@ -94,6 +109,7 @@ public class TakoyakiOrderingSystem {
                             System.out.println("Invalid choice.");
                         }
                         break;
+
                     case 2:
                         System.out.println(" ");
                         System.out.println("You've chosen to add a new takoyaki order.");
@@ -129,6 +145,7 @@ public class TakoyakiOrderingSystem {
                                 break;
                         }
                         break;
+
                     default:
                         System.out.println("Invalid choice.");
                         break;
@@ -138,10 +155,19 @@ public class TakoyakiOrderingSystem {
                 System.out.println(" ");
                 System.out.println("Overall selected items cost: " + totalCost);
                 System.out.println(" ");
-                System.out.print("Would you like to add more items? (Y/N): ");
-                addItems = drinkOrAddTakoyaki.next();
+                validInput = false;
 
-            } while (addItems.equalsIgnoreCase("Y"));
+                do {
+                    System.out.print("Would you like to add more items? (Y/N): ");
+                    addItems = drinkOrAddTakoyaki.next().toUpperCase();
+                    validInput = addItems.equals("Y") || addItems.equals("N");
+
+                    if (!validInput) {
+                        System.out.println("Invalid choice. Please enter 'Y' for Yes or 'N' for No.");
+                    }
+                } while (!validInput);
+
+            } while (addItems.equals("Y"));
 
             // Payment handling
             System.out.println("Total cost for your order: Php. " + totalCost);
@@ -169,7 +195,7 @@ public class TakoyakiOrderingSystem {
 
         }
 
-        if (addItems.equalsIgnoreCase("N")) {
+        if (addItems.equals("N")) {
             // Payment handling
             System.out.println("Total cost for your order: Php. " + totalCost);
             System.out.println(" ");
@@ -195,7 +221,6 @@ public class TakoyakiOrderingSystem {
                     break;
             }
         }
-
     }
 
     public void handleCashPayment() {
@@ -206,7 +231,7 @@ public class TakoyakiOrderingSystem {
     }
 
     public void handleGcashOrMayaPayment() {
-        System.out.println("This is E=Wallet payment");
+        System.out.println("This is E-Wallet payment");
         // Implement the logic for handling Gcash or Maya payment
         // This can include scanning QR codes, verifying transactions, etc.
         // You can add this logic here.
