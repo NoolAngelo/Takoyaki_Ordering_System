@@ -25,7 +25,7 @@ public class TakoyakiOrderingSystem {
         System.out.println("\t\t\t\t   1. Coke Original 325ml      Php. 34.10");
         System.out.println("\t\t\t\t   2. Coke Zero 325ml          Php. 34.50");
         System.out.println("\t\t\t\t   3. Sprite 325ml             Php. 34.10");
-        System.out.println("\t\t\t\t   4. royal 330ml              Php. 31.10");
+        System.out.println("\t\t\t\t   4. Royal 330ml              Php. 31.10");
         System.out.println("\t\t\t\t   5. Pepsi 320ml              Php. 26.95");
         System.out.println("\t\t\t\t   6. Mountain Dew 320ml       Php. 26.95");
         System.out.println("\t\t\t\t   7. CANCEL                             ");
@@ -93,15 +93,14 @@ public class TakoyakiOrderingSystem {
                             System.out.print("Drink Quantity: ");
                             int drinkQuantity = drinkQ.nextInt();
 
-                            if (drinkQuantity == 0) {
-                                System.out.println(" ");
-                                System.out.println("You've added a " + drinkMenu[drinkChoice - 1] + " to your order.");
-                                totalCost += drinkPrices[drinkChoice - 1];
-                            } else {
+                            if (drinkQuantity > 0) {
                                 System.out.println(" ");
                                 System.out.println("You've added " + drinkQuantity + " " + drinkMenu[drinkChoice - 1]
                                         + " to your order.");
                                 totalCost += drinkPrices[drinkChoice - 1] * drinkQuantity;
+                            } else {
+                                System.out.println(" ");
+                                System.out.println("Drink order canceled.");
                             }
                         } else if (drinkChoice == 7) {
                             System.out.println("Drink order canceled.");
@@ -168,73 +167,11 @@ public class TakoyakiOrderingSystem {
                 } while (!validInput);
 
             } while (addItems.equals("Y"));
-
-            // Payment handling
-            System.out.println("Total cost for your order: Php. " + totalCost);
-            System.out.println(" ");
-            System.out.println("Select Payment method: ");
-            System.out.println("1. Cash");
-            System.out.println("2. Gcash or Maya");
-            Scanner paymentScanner = new Scanner(System.in);
-            int paymentChoice = paymentScanner.nextInt();
-
-            switch (paymentChoice) {
-                case 1:
-                    System.out.println(" ");
-                    System.out.println("You've chosen to pay with Cash.");
-                    handleCashPayment();
-                    break;
-                case 2:
-                    System.out.println("You've chosen to pay with Gcash or Maya.");
-                    handleGcashOrMayaPayment();
-                    break;
-                default:
-                    System.out.println("Invalid payment method choice.");
-                    break;
-            }
-
         }
 
-        if (addItems.equals("N")) {
-            // Payment handling
-            System.out.println("Total cost for your order: Php. " + totalCost);
-            System.out.println(" ");
-            System.out.println("Select Payment method: ");
-            System.out.println("1. Cash");
-            System.out.println("2. Gcash or Maya");
-            Scanner paymentScanner = new Scanner(System.in);
-            int paymentChoice = paymentScanner.nextInt();
-
-            switch (paymentChoice) {
-                case 1:
-                    System.out.println(" ");
-                    System.out.println("You've chosen to pay with Cash.");
-                    handleCashPayment();
-                    break;
-                case 2:
-                    System.out.println(" ");
-                    System.out.println("You've chosen to pay with Gcash or Maya.");
-                    handleGcashOrMayaPayment();
-                    break;
-                default:
-                    System.out.println("Invalid payment method choice.");
-                    break;
-            }
-        }
-    }
-
-    public void handleCashPayment() {
-        System.out.println("This is cash payment");
-        // Implement the logic for handling cash payment
-        // This can include taking the cash, calculating change, etc.
-        // You can add this logic here.
-    }
-
-    public void handleGcashOrMayaPayment() {
-        System.out.println("This is E-Wallet payment");
-        // Implement the logic for handling Gcash or Maya payment
-        // This can include scanning QR codes, verifying transactions, etc.
-        // You can add this logic here.
+        // Payment handling
+        System.out.println(" ");
+        System.out.println("Total cost for your order: Php. " + totalCost);
     }
 
     public double getTotalCost() {
