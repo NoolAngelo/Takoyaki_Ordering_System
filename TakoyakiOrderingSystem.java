@@ -50,7 +50,7 @@ public class TakoyakiOrderingSystem {
 
         // Input validation for "Yes" or "No" choices
         boolean validInput;
-        Scanner scanAddItems = new Scanner(System.in);
+        Scanner scanAddItems = new Scanner(System.in);//resource leak 'scanAddItems' is never closed
 
         do {
             System.out.print("Would you like to add additional items? (Y/N): ");
@@ -171,7 +171,7 @@ public class TakoyakiOrderingSystem {
 
         // Payment handling
         System.out.println(" ");
-        System.out.println("Total cost for your order: Php. " + totalCost);
+        System.out.println("Total cost:" + totalCost + " Php. ");
     }
 
     public double getTotalCost() {
