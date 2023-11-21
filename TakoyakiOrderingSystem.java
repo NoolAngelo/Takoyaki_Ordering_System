@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TakoyakiOrderingSystem {
@@ -50,7 +51,7 @@ public class TakoyakiOrderingSystem {
 
         // Input validation for "Yes" or "No" choices
         boolean validInput;
-        Scanner scanAddItems = new Scanner(System.in);//resource leak 'scanAddItems' is never closed
+        Scanner scanAddItems = new Scanner(System.in);// resource leak 'scanAddItems' is never closed
 
         do {
             System.out.print("Would you like to add additional items? (Y/N): ");
@@ -73,6 +74,17 @@ public class TakoyakiOrderingSystem {
                 System.out.print("Your choice: ");
                 int choice1or2 = drinkOrAddTakoyaki.nextInt();
 
+                validInput = false;
+
+                do {
+                    try {
+                        choice1or2 = drinkOrAddTakoyaki.nextInt();
+                        validInput = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid input. Please enter a number.");
+                        drinkOrAddTakoyaki.next(); // consume the invalid input
+                    }
+                } while (!validInput);
                 switch (choice1or2) {
                     case 1:
                         displayDrinks();
@@ -179,38 +191,55 @@ public class TakoyakiOrderingSystem {
     }
 
     public static void main(String[] args) {
-        TakoyakiOrderingSystem orderingSystem = new TakoyakiOrderingSystem();
-        orderingSystem.displayMenu();
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Your choice: ");
-        int choice = scan.nextInt();
+        System.out.println("\t\t\t\t+=======================================+");
+        System.out.println("\t\t\t\t               Welcome to                  ");
+        System.out.println("\t\t\t\t                                         ");
+        System.out.println("\t\t\t\t            GELO'S TAKOYAKI                ");
+        System.out.println("\t\t\t\t                                         ");
+        System.out.println("\t\t\t\t          Press Enter to Order              ");
+        System.out.println("\t\t\t\t        press Q to Quit Program           ");
+        System.out.println("\t\t\t\t+=======================================+");
 
-        switch (choice) {
-            case 1:
-                orderingSystem.orderTakoyaki("Classic", 55.00);
-                break;
-            case 2:
-                orderingSystem.orderTakoyaki("Octopus", 65.00);
-                break;
-            case 3:
-                orderingSystem.orderTakoyaki("Green Onion", 55.00);
-                break;
-            case 4:
-                orderingSystem.orderTakoyaki("Cheese", 55.00);
-                break;
-            case 5:
-                orderingSystem.orderTakoyaki("Bacon", 65.00);
-                break;
-            case 6:
-                orderingSystem.orderTakoyaki("Crab", 65.00);
-                break;
-            case 7:
-                System.out.println("Order canceled.");
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                break;
+        String input = scan.nextLine();
+
+        if (input.equalsIgnoreCase("q")) {
+            System.out.println("Program terminated.");
+            return;
+        } else {
+            TakoyakiOrderingSystem orderingSystem = new TakoyakiOrderingSystem();
+            orderingSystem.displayMenu();
+
+            System.out.print("Your choice: ");
+            int choice = scan.nextInt();
+
+            switch (choice) {
+                case 1:
+                    orderingSystem.orderTakoyaki("Classic", 55.00);
+                    break;
+                case 2:
+                    orderingSystem.orderTakoyaki("Octopus", 65.00);
+                    break;
+                case 3:
+                    orderingSystem.orderTakoyaki("Green Onion", 55.00);
+                    break;
+                case 4:
+                    orderingSystem.orderTakoyaki("Cheese", 55.00);
+                    break;
+                case 5:
+                    orderingSystem.orderTakoyaki("Bacon", 65.00);
+                    break;
+                case 6:
+                    orderingSystem.orderTakoyaki("Crab", 65.00);
+                    break;
+                case 7:
+                    System.out.println("Order canceled.");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
         }
     }
 }
