@@ -192,17 +192,17 @@ public class TakoyakiOrderingSystem {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        Scanner scan2 = new Scanner(System.in);
 
         System.out.println("\t\t\t\t+=======================================+");
-        System.out.println("\t\t\t\t               Welcome to                  ");
-        System.out.println("\t\t\t\t                                         ");
-        System.out.println("\t\t\t\t            GELO'S TAKOYAKI                ");
-        System.out.println("\t\t\t\t                                         ");
-        System.out.println("\t\t\t\t          Press Enter to Order              ");
-        System.out.println("\t\t\t\t        press Q to Quit Program           ");
+        System.out.println("\t\t\t\t                              ");
+        System.out.println("\t\t\t\t             GELO'S TAKOYAKI                ");
+        System.out.println("\t\t\t\t                         ");
+        System.out.println("\t\t\t\t            Press Enter to Order              ");
+        System.out.println("\t\t\t\t          press Q to Quit Program           ");
         System.out.println("\t\t\t\t+=======================================+");
 
-        String input = scan.nextLine();
+        String input = scan2.nextLine();
 
         if (input.equalsIgnoreCase("q")) {
             System.out.println("Program terminated.");
@@ -240,6 +240,8 @@ public class TakoyakiOrderingSystem {
                     System.out.println("Invalid choice.");
                     break;
             }
+            scan.close();
+            scan2.close();
         }
     }
 }
