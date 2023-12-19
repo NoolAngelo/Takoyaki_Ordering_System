@@ -2,9 +2,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TakoyakiOrderingSystem {
-
+    
     private double totalCost = 0.0;
-
+    
     public void displayMenu() {
         System.out.println("\t\t\t\t+=======================================+");
         System.out.println("\t\t\t\t            GELO'S TAKOYAKI MENU         ");
